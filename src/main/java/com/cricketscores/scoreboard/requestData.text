@@ -1,0 +1,85 @@
+Please create a table and insert data
+--------------------------------------------------------------
+CREATE TABLE matches (
+id int NOT NULL auto_increment,
+match_number varchar(20) NOT NULL,
+man_of_match varchar(100),
+title varchar(255),
+timing varchar(50),
+city varchar(255),
+state varchar(255),
+stadium_name varchar(255),
+audienceAttendance varchar(50),
+home_team varchar(255),
+away_team varchar(255),
+winner varchar(255),
+captain_home varchar(255),
+captain_away varchar(255),
+toss_call varchar(20),
+toss_winner varchar(255),
+first_umpire varchar(255),
+second_umpire varchar(255),
+third_umpire varchar(255),
+final_description varchar(255),
+home_team_score varchar(50),
+home_team_wickets varchar(50),
+home_team_over_played varchar(50),
+away_team_score varchar(50),
+away_team_wickets varchar(50),
+away_team_over_played varchar(50),
+wickets_win bool,
+win_by VARCHAR(50),
+
+PRIMARY KEY(id)
+);
+
+
+INSERT INTO matches (match_number, man_of_match, title, timing, city, state, stadium_name, audience_attendance, home_team, away_team, winner, captain_home, captain_away, toss_call, toss_winner, first_umpire, second_umpire, third_umpire, final_description)
+VALUES ('1', 'Ravindra Jadeja', 'Lucknow Super Giants vs. Chennai Super Kings', '15:30', 'Lucknow', 'Uttar Pradesh', 'Ekana Cricket Stadium', '30000', 'Lucknow Super Giants', 'Chennai Super Kings', 'Lucknow Super Giants', 'KL Rahul', 'MS Dhoni', 'Heads', 'Lucknow Super Giants', 'Umpire 1', 'Umpire 2', 'Umpire 3', "");
+
+
+
+--------------------------------------------------------------------------------------
+
+1. Get Matches
+Request - /matches
+
+
+2. Post Matches - Request - /matches
+{
+    "matchNumber": "3",
+    "title": "Royal Challengers Bengaluru vs Mumbai Indians",
+    "timing": "19:30",
+    "venue": {
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "stadiumName": "M. Chinnaswamy Stadium"
+    },
+    "homeTeam": "Royal Challengers Bengaluru",
+    "awayTeam": "Mumbai Indians",
+    "captainHome": "Faf du Plessis",
+    "captainAway": "Rohit Sharma",
+    "umpires": {
+        "firstUmpire": "Umpire 1",
+        "secondUmpire": "Umpire 2",
+        "thirdUmpire": "Umpire 3"
+    }
+}
+
+3. Patch Match - Request - /matches/matchNumber - eg     /matches/3
+{
+    "finalDescription": "Royal Challengers Bengaluru win by 55 runs",
+    "homeTeamScore": "195",
+    "homeTeamWickets": "4",
+    "homeTeamOverPlayed": "20",
+    "awayTeamScore": "140",
+    "awayTeamWickets": "10",
+    "awayTeamOverPlayed": "16.4",
+    "winner": "Royal Challengers Bengaluru",
+    "manOfMatch": "Virat Kohli"
+}
+
+
+
+4. Delete Match
+Request -  matches/4
